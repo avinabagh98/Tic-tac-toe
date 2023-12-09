@@ -1,0 +1,58 @@
+.{
+    margin:0;
+    padding: 0;
+    
+}
+
+body{
+    background-color: #264653;
+    text-align: center;
+}
+
+.container{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxes{
+    height: 60vh;
+    width: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.box {
+    background-color: #e9c46a;
+    color: #e76f51;
+    height: 18vmin;
+    width: 18vmin;
+    font-size: 12vmin;
+}
+
+h1{
+    background-color: #e9c46a;
+    color: #264653;
+    height: 20%;
+    
+}
+
+h2{
+    color: #e9c46a;
+    font-size: 30px;
+
+}
+
+#newGameBtn{
+    height: 6vmin;
+    width: 10vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
