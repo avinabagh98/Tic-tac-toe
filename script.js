@@ -1,5 +1,7 @@
 let boxes = document.querySelectorAll(".box");
 let turnX = true;
+let win = false;
+let clk = 0;
 let msg = document.querySelector("h2");
 let newGamebtn = document.querySelector("#newGameBtn");
 let btnContainer = document.querySelector(".btnContainer");
@@ -12,26 +14,16 @@ const winPatterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2,5
 //     })
 // });
 
+let drawChk = ()=>{
+    if(win==false && clk==9){
+        console.log("Inside if");
+        msg.innerText = "Match is draw";
+        btnContainer.classList.remove("hide");
+        newGamebtn.addEventListener("click", ()=>{
+                        window.location.reload();
+                    });
+    }}
 
-for (let box of boxes) {
-    box.addEventListener("click", () => {
-        console.log("Clicked");
-        if (turnX) {
-            box.innerText = "x";
-            turnX = false;
-            winChk();
-
-        }
-        else {
-            box.innerText = "o";
-            turnX = true;
-            winChk();
-        }
-
-        box.disabled = true;
-
-    });
-};
 
 function winChk(){
     for (let pattern of winPatterns){
@@ -49,6 +41,8 @@ function winChk(){
                 newGamebtn.addEventListener("click", ()=>{
                     window.location.reload();
                 });
+                win = true;
+                
             }
         }
         
@@ -56,12 +50,33 @@ function winChk(){
 };
 
 
+//Game Logic
+
+for (let box of boxes) {
+    box.addEventListener("click", () => {
+        clk++
+        if (turnX) {
+            box.innerText = "x";
+            turnX = false;
+            winChk();
+            drawChk();
+
+        }
+        else {
+            box.innerText = "o";
+            turnX = true;
+            winChk();
+            drawChk();
+        }
+
+        box.disabled = true;
+
+    });
+};
 
 
 
-// let newGame = () =>{
-//     newGamebtn.style.display = "block";
-//     newGamebtn.addEventListener('click', ()=>{
-//         window.location.reload();
-//     });
-// };
+
+
+
+
