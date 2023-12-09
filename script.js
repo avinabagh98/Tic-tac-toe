@@ -2,6 +2,7 @@ let boxes = document.querySelectorAll(".box");
 let turnX = true;
 let msg = document.querySelector("h2");
 let newGamebtn = document.querySelector("#newGameBtn");
+let btnContainer = document.querySelector(".btnContainer");
 
 const winPatterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2,5,8], [0,4,8], [2,4,6]]
 
@@ -40,11 +41,11 @@ function winChk(){
 
         if (pos1!=='' && pos2 !== '' && pos3!==''){         // winning condition 1
             if(pos1 === pos2 && pos2 === pos3){             // winning condition 2
-                msg.innerText = `Winner is ${pos1} !!`;     // winning msg
+                msg.innerText = `Congratulations!! Winner is ${pos1}`;     // winning msg
                 boxes.forEach((box)=>{                      // after gettiing winner disabled other box
                     box.disabled = true;
                 });
-                newGamebtn.style.display = 'block';
+                btnContainer.classList.remove("hide");
                 newGamebtn.addEventListener("click", ()=>{
                     window.location.reload();
                 });
